@@ -16,7 +16,7 @@ dependencies = [
 ]
 
 [project.scripts]
-kawai-focus-v2 = "kawai_focus_v2:main"
+kawai-focus = "kawai_focus_v2.start_app:run"
 filling-timers = "kawai_focus_v2.database.seed:start_filling_data"
 
 [build-system]

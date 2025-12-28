@@ -5,12 +5,32 @@ from kawai_focus_v2.core.messages.errors import ErrorMessage
 class TimerModel(BaseModel):
     """Модель схемы данных таймера"""
 
-    id: int | None = None
+    id: int
     title: str
     pomodoro_time: int
     break_time: int
     break_long_time: int
     count_pomodoro: int
+
+
+class NewTimerModel(BaseModel):
+    """Модель схемы нового таймера"""
+
+    title: str
+    pomodoro_time: int
+    break_time: int
+    break_long_time: int
+    count_pomodoro: int
+
+
+class UpdateTimerModel(BaseModel):
+    """Модель схемы обновления данных таймера"""
+
+    title: str | None = None
+    pomodoro_time: int | None = None
+    break_time: int | None = None
+    break_long_time: int | None = None
+    count_pomodoro: int | None = None
 
 
 class TimerListModel(BaseModel):

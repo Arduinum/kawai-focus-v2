@@ -28,3 +28,5 @@ repos:
           - sqlalchemy
           - alembic
           - pydantic-settings
+          - fastapi
+          - uvicorn

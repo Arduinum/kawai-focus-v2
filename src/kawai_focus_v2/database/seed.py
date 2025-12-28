@@ -1,10 +1,10 @@
-from kawai_focus_v2.schemas.timer import TimerModel
+from kawai_focus_v2.schemas.timer import NewTimerModel
 from kawai_focus_v2.database.cruds import new_timer
 from kawai_focus_v2.database.db import get_db_instance
 from kawai_focus_v2.database.data import data_timers
 
 
-def new_temers(data: list[TimerModel]) -> None:
+def new_temers(data: list[NewTimerModel]) -> None:
     """Заполняет базу данных образцами таймеров"""
 
     db = get_db_instance()

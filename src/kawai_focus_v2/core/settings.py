@@ -25,9 +25,18 @@ class SettingsDB(ModelConfig):
         return f'sqlite:///{self.name_db}'
 
 
+class SettingsApp(ModelConfig):
+    """Настройки для приложения"""
+
+    port_app: int
+    host_app: str
+    is_reload: bool
+
+
 class Settings(ModelConfig):
     """Класс для данных конфига"""
 
+    app_settings: SettingsApp = Field(default_factory=SettingsApp)
     db_settings: SettingsDB = Field(default_factory=SettingsDB)
 
 
