@@ -7,10 +7,17 @@ authors = [
     { name = "Arduinum628", email = "message.chaos628@gmail.com" }
 ]
 requires-python = ">=3.11"
-dependencies = []
+dependencies = [
+    "alembic>=1.17.2",
+    "fastapi>=0.127.0",
+    "pydantic-settings>=2.12.0",
+    "sqlalchemy>=2.0.45",
+    "uvicorn>=0.40.0",
+]
 
 [project.scripts]
-kawai-focus-v2 = "kawai_focus_v2:main"
+kawai-focus = "kawai_focus_v2.start_app:run"
+filling-timers = "kawai_focus_v2.database.seed:start_filling_data"
 
 [build-system]
 requires = ["uv_build>=0.9.18,<0.10.0"]
@@ -19,4 +26,6 @@ build-backend = "uv_build"
 [dependency-groups]
 dev = [
     "pre-commit>=4.5.1",
+    "pytest>=9.0.2",
+    "ruff>=0.14.10",
 ]

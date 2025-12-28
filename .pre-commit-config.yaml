@@ -24,3 +24,9 @@ repos:
     rev: 0.0.3
     hooks:
       - id: ty-check
+        additional_dependencies:
+          - sqlalchemy
+          - alembic
+          - pydantic-settings
+          - fastapi
+          - uvicorn
