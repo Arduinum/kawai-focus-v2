@@ -2,9 +2,9 @@
   "$schema": "https://schema.tauri.app/config/2",
   "productName": "Kawai-Focus",
   "version": "0.1.0",
-  "identifier": "com.tauri.dev",
+  "identifier": "com.kawai.focus",
   "build": {
-    "frontendDist": "../client/dist",
+    "frontendDist": "../../client/dist",
     "devUrl": "http://localhost:8100",
     "beforeDevCommand": "cd ../client && ionic serve",
     "beforeBuildCommand": "cd ../client && npm run build"
