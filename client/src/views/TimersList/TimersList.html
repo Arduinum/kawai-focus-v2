@@ -1,0 +1,81 @@
+<div class="timers-container">
+  <div class="page-header">
+    <h1>Таймеры</h1>
+  </div>
+
+  <div class="timers-list">
+    <!-- Loading state -->
+    <div v-if="loading" class="loading">
+      <p>Загрузка таймеров...</p>
+    </div>
+
+    <!-- Error state -->
+    <div v-else-if="error" class="error-message">
+      <p>{{ error }}</p>
+    </div>
+
+    <!-- Empty state -->
+    <div v-else-if="timers.length === 0" class="empty-state">
+      <p>Нет таймеров</p>
+    </div>
+
+    <!-- Timers list -->
+    <div v-else class="timer-cards">
+      <div
+        v-for="timer in timers"
+        :key="timer.id"
+        class="timer-card"
+        :class="{ expanded: expandedId === timer.id }"
+      >
+        <!-- Card header -->
+        <div class="card-header" @click="toggleExpand(timer.id)">
+          <div class="timer-icon">
+            <ion-icon :icon="timerOutline"></ion-icon>
+          </div>
+          <div class="timer-info">
+            <h3 class="timer-title">{{ timer.title }}</h3>
+            <p class="timer-subtitle">{{ timer.count_pomodoro }} помидоров по {{ timer.pomodoro_time }} минут</p>
+          </div>
+          <div class="expand-icon">
+            <ion-icon
+              :icon="expandedId === timer.id ? chevronUp : chevronDown"
+            ></ion-icon>
+          </div>
+        </div>
+
+        <!-- Card content -->
+        <div v-show="expandedId === timer.id" class="card-content">
+          <div class="timer-details">
+            <div class="detail-row">
+              <span class="detail-label">Название:</span>
+              <span class="detail-value">{{ timer.title }}</span>
+            </div>
+            <div class="detail-row">
+              <span class="detail-label">Длительность помидора:</span>
+              <span class="detail-value">{{ timer.pomodoro_time }} минут</span>
+            </div>
+            <div class="detail-row">
+              <span class="detail-label">Количество помидоров:</span>
+              <span class="detail-value">{{ timer.count_pomodoro }}</span>
+            </div>
+          </div>
+
+          <div class="card-actions">
+            <button class="btn btn-primary">
+              <ion-icon :icon="playCircleOutline"></ion-icon>
+              Открыть
+            </button>
+            <button class="btn btn-secondary">
+              <ion-icon :icon="pencilOutline"></ion-icon>
+              Редактировать
+            </button>
+            <button class="btn btn-danger">
+              <ion-icon :icon="trashOutline"></ion-icon>
+              Удалить
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

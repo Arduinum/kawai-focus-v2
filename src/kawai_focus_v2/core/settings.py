@@ -31,6 +31,7 @@ class SettingsApp(ModelConfig):
     port_app: int
     host_app: str
     is_reload: bool
+    frontend_origins: str
 
 
 class Settings(ModelConfig):

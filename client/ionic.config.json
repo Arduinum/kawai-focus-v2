@@ -3,5 +3,8 @@
   "integrations": {
     "capacitor": {}
   },
-  "type": "vue-vite"
+  "type": "vue-vite",
+  "ionic": {
+    "routerOutlet": false
+  }
 }

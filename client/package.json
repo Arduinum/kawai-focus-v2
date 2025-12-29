@@ -1,5 +1,5 @@
 {
-  "name": "client",
+  "name": "kawai-focus",
   "private": true,
   "version": "0.0.1",
   "type": "module",
@@ -39,5 +39,5 @@
     "vitest": "^0.34.6",
     "vue-tsc": "^2.1.10"
   },
-  "description": "An Ionic project"
+  "description": "Kawai-Focus - приложение для фокусировки внимания на основе таймера Pomodoro."
 }
