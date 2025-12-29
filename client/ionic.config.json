@@ -1,0 +1,10 @@
+{
+  "name": "client",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "vue-vite",
+  "ionic": {
+    "routerOutlet": false
+  }
+}
