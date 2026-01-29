@@ -8,14 +8,53 @@ import {
   trashOutline
 } from 'ionicons/icons';
 
+import { ref, onMounted } from 'vue';
+import { getTimers } from '../../db/crud/timerCrud';
+
 export default {
   name: 'TimersList',
   components: {
     IonIcon,
   },
   setup() {
-    // Возвращаем иконки, чтобы они были доступны в шаблоне
+    const timers = ref([]);
+    const loading = ref(true);
+    const error = ref(null);
+    const expandedId = ref(null);
+
+    const loadTimers = async () => {
+      loading.value = true;
+      error.value = null;
+
+      try {
+        const result = await getTimers();
+        timers.value = result;
+      } catch (err) {
+        error.value = err.message || 'Ошибка загрузки таймеров';
+      } finally {
+        loading.value = false;
+      }
+    };
+
+    const toggleExpand = (id) => {
+      expandedId.value = expandedId.value === id ? null : id;
+    };
+
+    onMounted(() => {
+      loadTimers();
+    });
+
     return {
+      // состояние
+      timers,
+      loading,
+      error,
+      expandedId,
+
+      // методы
+      toggleExpand,
+
+      // иконки
       timerOutline,
       chevronUp,
       chevronDown,
@@ -23,45 +62,5 @@ export default {
       pencilOutline,
       trashOutline,
     };
-  },
-  data() {
-    return {
-      timers: [],
-      expandedId: null,
-      loading: true,
-      error: null,
-      apiUrl: 'http://127.0.0.1:8090/api/timers'
-    };
-  },
-  mounted() {
-    this.fetchTimers();
-  },
-  methods: {
-    async fetchTimers() {
-      try {
-        this.loading = true;
-        this.error = null;
-
-        // Для Tauri invoke (раскомментировать при необходимости)
-        // const { invoke } = window.__TAURI__.tauri;
-        // this.timers = await invoke('list_timers');
-
-        const response = await fetch(`${this.apiUrl}/`);
-
-        if (!response.ok) {
-          throw new Error(`HTTP error! status: ${response.status}`);
-        }
-
-        this.timers = await response.json();
-        this.loading = false;
-      } catch (err) {
-        this.error = `Ошибка загрузки таймеров: ${err.message}`;
-        this.loading = false;
-        console.error('Fetch error:', err);
-      }
-    },
-    toggleExpand(timerId) {
-      this.expandedId = this.expandedId === timerId ? null : timerId;
-    }
   },
 };
