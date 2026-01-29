@@ -17,8 +17,8 @@ npm-debug.log*
 /.ionic/
 
 # Tauri
-/target/
-/gen/schemas
+target/
+gen/
 
 # Database
 *.db
