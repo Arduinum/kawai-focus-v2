@@ -1,0 +1,42 @@
+{
+  "$schema": "https://schema.tauri.app/config/2",
+  "productName": "Kawai-Focus",
+  "version": "0.1.0",
+  "identifier": "com.kawai.focus",
+  "build": {
+    "frontendDist": "../../client/dist",
+    "devUrl": "http://localhost:8100",
+    "beforeDevCommand": "cd ../client && ionic serve",
+    "beforeBuildCommand": "cd ../client && npm run build"
+  },
+  "app": {
+    "withGlobalTauri": true,
+    "windows": [
+      {
+        "label": "main",
+        "title": "Kawai-Focus",
+        "width": 800,
+        "height": 600,
+        "resizable": true,
+        "fullscreen": false,
+        "devtools": true
+      }
+    ],
+    "security": {
+      "csp": null,
+      "capabilities": ["default"]
+    }
+  },
+  "bundle": {
+    "active": true,
+    "targets": ["deb", "rpm"],
+    "shortDescription": "Kawai-Focus - приложение для фокусировки внимания на основе таймера Pomodoro.",
+    "icon": [
+      "icons/32x32.png",
+      "icons/128x128.png",
+      "icons/128x128@2x.png",
+      "icons/icon.icns",
+      "icons/icon.ico"
+    ]
+  }
+}
