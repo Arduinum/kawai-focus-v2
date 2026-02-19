@@ -2,7 +2,7 @@
   "$schema": "https://schema.tauri.app/config/2",
   "productName": "Kawai-Focus",
   "version": "0.1.0",
-  "identifier": "com.kawai.focus",
+  "identifier": "io.github.arduinum.KawaiFocus",
   "build": {
     "frontendDist": "../../client/dist",
     "devUrl": "http://localhost:8100",
@@ -30,6 +30,13 @@
   "bundle": {
     "active": true,
     "targets": ["deb", "rpm"],
+    "linux": {
+      "deb": {
+        "files": {
+          "/usr/share/metainfo/io.github.arduinum.KawaiFocus.metainfo.xml": "assets/io.github.arduinum.KawaiFocus.metainfo.xml"
+        }
+      }
+    },
     "shortDescription": "Kawai-Focus - приложение для фокусировки внимания на основе таймера Pomodoro.",
     "icon": [
       "icons/32x32.png",
