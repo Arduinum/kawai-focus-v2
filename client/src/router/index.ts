@@ -1,7 +1,8 @@
 import { createRouter, createWebHistory } from '@ionic/vue-router';
-import TimersList from '../views/TimersList/TimersList.vue';
+import type { RouteRecordRaw } from 'vue-router';
+import TimersList from '@/views/TimersList/TimersList.vue';
 
-const routes = [
+const routes: RouteRecordRaw[] = [
   {
     path: '/',
     redirect: '/timers'

@@ -1,4 +1,4 @@
 <!-- TimersList.vue -->
-<template src="./TimersList.html"></template>
-<script src="./TimersList.js"></script>
-<style src="./TimersList.css" scoped></style>
+<template src="@/views/TimersList/TimersList.html"></template>
+<script lang="ts" src="@/views/TimersList/TimersList.ts"></script>
+<style src="@/views/TimersList/TimersList.css" scoped></style>

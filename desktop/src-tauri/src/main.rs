@@ -3,5 +3,5 @@
 
 fn main() {
   println!("Запуск приложения Tauri...");
-  app_lib::run();
+  kawai_focus::run();
 }

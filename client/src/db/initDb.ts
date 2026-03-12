@@ -1,13 +1,12 @@
 import Database from '@tauri-apps/plugin-sql';
-import { CREATE_TIMER } from './ddl/timerDDL';
-import { getDB_URL } from '../config';
-import { seedDb } from './seed';
+import { CREATE_TIMER } from '@/db/ddl/timerDDL';
+import { getDB_URL } from '@/config';
+import { seedDb } from '@/db/seed';
 
-let dbPromise = null;
+let dbPromise: Promise<Database> | null = null;
 
-export async function getDb() {
-  // Функция для получения подключения к базе данных
-
+/** Получает подключение к бд */
+export async function getDb(): Promise<Database> {
   if (!dbPromise) {
     dbPromise = (async () => {
       try {
@@ -22,5 +21,5 @@ export async function getDb() {
       }
     })();
   }
-  return await dbPromise;  // await для консистентности
+  return await dbPromise;
 }

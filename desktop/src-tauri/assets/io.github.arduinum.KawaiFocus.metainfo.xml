@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<component type="desktop-application">
+  <id>io.github.arduinum.KawaiFocus</id>
+
+  <name>Kawai-Focus</name>
+  <summary>Focus timer for working sessions</summary>
+
+  <description>
+    <p>Kawai-Focus is a focus-training app based on the Pomodoro timer.</p>
+  </description>
+
+  <developer id="io.github.arduinum">
+    <name>Kaddo Eugene</name>
+  </developer>
+
+  <metadata_license>FSFAP</metadata_license>
+  <project_license>MIT</project_license>
+
+  <launchable type="desktop-id">io.github.arduinum.KawaiFocus.desktop</launchable>
+
+  <url type="homepage">https://github.com/Arduinum/kawai-focus-v2</url>
+</component>
