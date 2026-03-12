@@ -1,14 +1,15 @@
-#[cfg(target_os = "linux")]
-fn apply_linux_webkit_cli_flags() {
-    let disable = std::env::args().any(|a| a == "--disable-webkit-compositing");
-    if disable {
-        unsafe { std::env::set_var("WEBKIT_DISABLE_COMPOSITING_MODE", "1"); }
-    }
-}
+mod flags;
 
 #[cfg_attr(mobile, tauri::mobile_entry_point)]
 pub fn run() {
-    apply_linux_webkit_cli_flags();
+    #[cfg(target_os = "linux")]
+    if std::env::args().any(|a| a == "--help" || a == "-h") {
+        flags::print_help();
+        std::process::exit(0);
+    }
+
+    #[cfg(target_os = "linux")]
+    flags::apply_linux_cli_flags();
 
     tauri::Builder::default()
         .plugin(tauri_plugin_sql::Builder::default().build())
