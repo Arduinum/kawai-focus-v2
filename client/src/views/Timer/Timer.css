@@ -1,0 +1,173 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+.timer-page-container {
+  background-color: #f5f5f5;
+  min-height: 100vh;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto,
+    'Helvetica Neue', Arial, sans-serif;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.timer-screen {
+  padding: 24px 16px;
+  width: 100%;
+  max-width: 500px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.timer-display-card {
+  background-color: #ffffff;
+  border-radius: 16px;
+  padding: 28px 24px 24px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 20px;
+  width: 100%;
+}
+
+.timer-card-labels {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+}
+
+.label-left,
+.label-right {
+  font-size: 13px;
+  color: #9e9e9e;
+  font-weight: 400;
+  letter-spacing: 0.3px;
+}
+
+.timer-time {
+  width: 100%;
+  text-align: center;
+}
+
+.time-text {
+  font-size: 56px;
+  font-weight: 400;
+  color: #212121;
+  letter-spacing: 2px;
+  font-variant-numeric: tabular-nums;
+  line-height: 1;
+}
+
+.timer-progress-bar {
+  width: 100%;
+  height: 2px;
+  background-color: #e0e0e0;
+  border-radius: 2px;
+  overflow: hidden;
+}
+
+.timer-progress-fill {
+  height: 100%;
+  background-color: #1976d2;
+  border-radius: 2px;
+  transition: width 1s linear;
+}
+
+.timer-controls {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  width: 100%;
+  height: 48px;
+}
+
+.btn-timer {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  width: 120px;
+  height: 44px;
+  flex-shrink: 0; /* запрет на сжатие */
+  background-color: transparent;
+  font-size: 14px;
+  font-weight: 500;
+  border-radius: 50px;
+  cursor: pointer;
+  letter-spacing: 0.5px;
+  border: 2px solid;
+}
+
+.btn-timer ion-icon {
+  font-size: 17px;
+}
+
+.btn-timer-start {
+  border-color: #4caf50;
+  color: #4caf50;
+}
+
+.btn-timer-start:hover {
+  background-color: rgba(76, 175, 80, 0.10);
+}
+
+.btn-timer-start:active {
+  background-color: rgba(76, 175, 80, 0.22);
+}
+
+.btn-timer-stop {
+  border-color: #f44336;
+  color: #f44336;
+}
+
+.btn-timer-stop:hover {
+  background-color: rgba(244, 67, 54, 0.10);
+}
+
+.btn-timer-stop:active {
+  background-color: rgba(244, 67, 54, 0.22);
+}
+
+.btn-timer-pause {
+  border-color: #ffc107;
+  color: #f9a825;
+}
+
+.btn-timer-pause:hover {
+  background-color: rgba(255, 193, 7, 0.10);
+}
+
+.btn-timer-pause:active {
+  background-color: rgba(255, 193, 7, 0.22);
+}
+
+.btn-timer {
+  transition: all 0.2s ease, opacity 0.25s ease, transform 0.25s ease;
+}
+
+.btn-timer.hidden {
+    display: none;
+}
+
+@media (max-width: 600px) {
+  .timer-display-card {
+    padding: 20px 16px;
+    border-radius: 12px;
+    gap: 16px;
+  }
+
+  .time-text {
+    font-size: 44px;
+  }
+
+  .btn-timer {
+    padding: 8px 16px;
+    font-size: 13px;
+  }
+}

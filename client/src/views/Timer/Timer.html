@@ -1,0 +1,70 @@
+<ion-page>
+  <ion-content>
+    <div class="timer-page-container">
+      <div class="timer-screen">
+
+        <!-- Timer Card -->
+        <div class="timer-display-card">
+
+          <!-- Card top labels -->
+          <div class="timer-card-labels">
+            <span v-if="timer" class="label-left">{{ timer.title }}</span>
+            <span class="label-right">Помидор</span>
+          </div>
+
+          <!-- Time display -->
+          <div class="timer-time">
+            <span class="time-text">{{ countdown?.formatted }}</span>
+          </div>
+
+          <!-- Progress bar -->
+          <div class="timer-progress-bar">
+            <div class="timer-progress-fill" :style="{ width: `${countdown?.progress.value}%` }"></div>
+          </div>
+
+          <!-- Buttons -->
+          <div class="timer-controls">
+
+            <!-- Видна только при running и paused -->
+            <button
+              class="btn-timer
+              btn-timer-stop"
+              id="btn-stop"
+              v-show="state === 'running' || state === 'paused'"
+              @click="() => { setState('idle'); countdown?.stop(); }"
+            >
+              <ion-icon :icon="stopOutline"></ion-icon>
+              Стоп
+            </button>
+
+            <!-- Видна при idle и paused -->
+            <button
+              class="btn-timer
+              btn-timer-start"
+              id="btn-start"
+              v-show="state === 'idle' || state === 'paused'"
+              @click="() => { setState('running'); countdown?.start(); }"
+            >
+              <ion-icon :icon="playOutline"></ion-icon>
+              Старт
+            </button>
+
+            <!-- Видна только при running -->
+            <button
+              class="btn-timer
+              btn-timer-pause"
+              id="btn-pause"
+              v-show="state === 'running'"
+              @click="() => { setState('paused'); countdown?.pause(); }"
+            >
+              <ion-icon :icon="pauseOutline"></ion-icon>
+              Пауза
+            </button>
+
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </ion-content>
+</ion-page>
