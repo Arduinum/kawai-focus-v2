@@ -1,5 +1,6 @@
 import { defineComponent, onMounted, ref } from 'vue'
-import { IonIcon } from '@ionic/vue'
+import { IonIcon, IonPage, IonContent } from '@ionic/vue'
+import { useRouter } from 'vue-router';
 import {
   timerOutline,
   chevronUp,
@@ -14,12 +15,18 @@ import type { TimersRow } from '@/types/timerType'
 
 export default defineComponent({
   name: 'TimersList',
-  components: { IonIcon },
+  components: { IonIcon, IonPage, IonContent },
   setup() {
     const timers = ref<TimersRow[]>([])
     const loading = ref<boolean>(true)
     const error = ref<string | null>(null)
     const expandedId = ref<number | null>(null)
+
+    const router = useRouter();
+
+    const goToTimer = (id: number) => {
+      router.push(`/timer/${id}`);
+    };
 
     const loadTimers = async (): Promise<void> => {
       loading.value = true
@@ -55,6 +62,7 @@ export default defineComponent({
       playCircleOutline,
       pencilOutline,
       trashOutline,
+      goToTimer
     }
   },
 })
