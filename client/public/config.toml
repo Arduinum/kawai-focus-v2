@@ -1,0 +1,4 @@
+# Конфиг таймера
+
+[sound]
+sound_id = "alarm_beep"
