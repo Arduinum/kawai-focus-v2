@@ -1,6 +1,6 @@
 [package]
 name = "kawai-focus"
-version = "0.1.0"
+version = "0.2.0"
 description = "Kawai-Focus - приложение для фокусировки внимания на основе таймера Pomodoro."
 authors = ["Arduinum"]
 license = "MIT"
@@ -24,3 +24,4 @@ log = "0.4"
 tauri = { version = "2.9.5", features = [] }
 tauri-plugin-log = "2"
 tauri-plugin-sql = { version = "2.3.1", features = ["sqlite"] }
+tauri-plugin-fs = "2.5.1"
