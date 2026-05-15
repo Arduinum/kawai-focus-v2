@@ -8,9 +8,12 @@ import {
   pauseOutline
 } from 'ionicons/icons';
 
-import { getTimer } from '@/db/crud/timerCrud';
 import type { TimerRow } from '@/types/timerType';
 import { useCountdown } from '@/composables/useTimer';
+import { playSound } from '@/composables/useAudio';
+import { getSoundPathById } from '@/composables/libAudio';
+import { loadConfig } from '@/composables/useConfig';
+import { queueTimer } from '@/composables/chainTimer';
 import { CountdownReturn } from '@/types/timerType';
 
 /** Возможные состояния таймера */
@@ -43,6 +46,9 @@ export default defineComponent({
     /** Shallow-ссылка на экземпляр composable обратного отсчёта */
     const countdown = shallowRef<CountdownReturn | null>(null);
 
+    /** Чтение конфига */
+    const config = loadConfig()
+
     /** Останавливает таймер при размонтировании компонента */
     onUnmounted(() => {
       countdown.value?.stop();
@@ -51,15 +57,14 @@ export default defineComponent({
     /** Загружает данные таймера из БД и инициализирует отсчёт */
     const loadTimer = async (): Promise<void> => {
       try {
-        const result = await getTimer(id);
-        const timerData = Array.isArray(result) ? result[0] : result;
-        timer.value = timerData;
+        const timers = await queueTimer(id);
 
         countdown.value = useCountdown({
-          seconds: timerData.pomodoro_time ?? 0,
-          onFinish: () => alert('Время вышло!')
+          timers: timers,
+          onFinish: async () => {
+            await playSound(getSoundPathById((await config).sound.sound_id));
+          }
         });
-
       } catch (e) {
         error.value = 'Ошибка загрузки таймера';
         console.error(e);

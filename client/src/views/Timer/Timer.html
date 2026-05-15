@@ -8,8 +8,8 @@
 
           <!-- Card top labels -->
           <div class="timer-card-labels">
-            <span v-if="timer" class="label-left">{{ timer.title }}</span>
-            <span class="label-right">Помидор</span>
+            <span class="label-left">{{ countdown?.timerNow.value?.title }}</span>
+            <span class="label-right">{{ countdown?.timerNow.value?.typeTimer }}</span>
           </div>
 
           <!-- Time display -->
@@ -18,7 +18,7 @@
           </div>
 
           <!-- Progress bar -->
-          <div class="timer-progress-bar">
+          <div v-show="!countdown?.isFinished.value" class="timer-progress-bar">
             <div class="timer-progress-fill" :style="{ width: `${countdown?.progress.value}%` }"></div>
           </div>
 
@@ -42,7 +42,7 @@
               class="btn-timer
               btn-timer-start"
               id="btn-start"
-              v-show="state === 'idle' || state === 'paused'"
+              v-show="state === 'idle' && !countdown?.isFinished.value || state === 'paused'"
               @click="() => { setState('running'); countdown?.start(); }"
             >
               <ion-icon :icon="playOutline"></ion-icon>
@@ -54,7 +54,7 @@
               class="btn-timer
               btn-timer-pause"
               id="btn-pause"
-              v-show="state === 'running'"
+              v-show="state === 'running' && !countdown?.isFinished.value"
               @click="() => { setState('paused'); countdown?.pause(); }"
             >
               <ion-icon :icon="pauseOutline"></ion-icon>

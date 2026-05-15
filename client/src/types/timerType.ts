@@ -23,7 +23,7 @@ export type TimerRow = {
 
 /** Параметры инициализации обратного отсчёта */
 export type CountdownOptions = {
-  seconds: number;
+  timers: TypeTimer[];
   onFinish?: () => void;
 }
 
@@ -36,4 +36,13 @@ export type CountdownReturn = {
   start: () => void;
   stop: () => void;
   pause: () => void;
+  timerNow: Ref<TypeTimer | undefined>;
+  isFinished: ComputedRef<boolean>;
+}
+
+/** Тип таймеров */
+export type TypeTimer = {
+  title: string;
+  time: number;
+  typeTimer: string;
 }
