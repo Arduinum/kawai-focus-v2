@@ -1,7 +1,7 @@
 [package]
 name = "kawai-focus"
 version = "0.2.0"
-description = "Kawai-Focus - приложение для фокусировки внимания на основе таймера Pomodoro."
+description = "Кавай-Фокус (Kawai-Focus) - приложение для фокусировки внимания на основе таймера Pomodoro."
 authors = ["Arduinum"]
 license = "MIT"
 repository = ""
